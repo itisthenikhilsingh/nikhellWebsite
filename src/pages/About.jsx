@@ -5,7 +5,7 @@ import TitleHeader from "../components/TitleHeader";
 import Frameworks from "../components/Frameworks";
 import { motion } from "framer-motion";
 import IndiaDotCanvas from "../components/IndiaDotMap";
-
+import { FiAward, FiCode, FiBook, FiDownload } from "react-icons/fi";
 const About = () => {
   const sectionRef = useRef(null);
   const titleRef = useRef(null);
@@ -171,9 +171,9 @@ const About = () => {
                     Time Zone
                   </h3>
                   <p className="mt-2 md:text-xl">
-                    I'm based in Noida{" "}
-                    <span className="text-[#9257ff]">India</span>, and open to
-                    remote work worldwide
+                    I'm in
+                    <span className="text-[#9257ff]"> Noida,India</span> and
+                    open to remote work worldwide
                   </p>
                 </div>
 
@@ -188,21 +188,83 @@ const About = () => {
                   </div>
                 </div>
               </div>
-
               {/* Column 2 */}
-              <div className="bg-[#111111] rounded-xl p-5">
-                <h3 className="text-xl text-blue-50">Column 2</h3>
-                <p className="mt-2 text-blue-100">
-                  Content for the second column goes here.
-                </p>
-              </div>
 
+              <div className="bg-[#111111] rounded-xl p-5 md:p-7">
+                <h3 className="text-2xl md:text-3xl font-bold text-blue-50 mb-4">
+                  Highlights
+                </h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {/* Education */}
+                  <div className="flex items-start gap-3">
+                    <div className="flex-shrink-0 mt-1">
+                      <FiBook className="h-5 w-5 text-yellow-400" />
+                    </div>
+                    <div>
+                      <p className="text-blue-50 font-semibold">B.Tech in IT</p>
+                      <p className="text-blue-100 text-sm md:text-base">
+                        Dr. B.R. Ambedkar NIT Jalandhar
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* GATE Qualified */}
+                  <div className="flex items-start gap-3">
+                    <div className="flex-shrink-0 mt-1">
+                      <FiAward className="h-5 w-5 text-yellow-400" />
+                    </div>
+                    <div>
+                      <p className="text-blue-50 font-semibold">
+                        GATE 2025 (CS) Qualified
+                      </p>
+                      <p className="text-blue-100 text-sm md:text-base">
+                        Top 10% nationwide
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* LeetCode */}
+                  <div className="flex items-start gap-3 md:col-span-2">
+                    <div className="flex-shrink-0 mt-1">
+                      <FiCode className="h-5 w-5 text-green-500" />
+                    </div>
+                    <div>
+                      <p
+                        className="text-blue-50 font-semibold"
+                        href="https://leetcode.com/u/NikhilSingh672001"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        LeetCode: 170+ Solved
+                      </p>
+                      <p className="text-blue-100 text-sm md:text-base">
+                        Rating: 1470+ • 50-Day Streak 🔥
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
               {/* Column 3 */}
-              <div className="bg-[#111111] rounded-xl p-5">
-                <h3 className="text-xl text-blue-50">Column 3</h3>
-                <p className="mt-2 text-blue-100">
-                  Content for the third column goes here.
+              <div className="bg-[#111111] rounded-xl p-5 z-[10]">
+                <h3 className="text-2xl md:text-3xl font-bold text-blue-50 flex items-center gap-2">
+                  <FiDownload className="text-[#9257ff]" />
+                  MORE ?
+                </h3>
+
+                <p className="mt-2 text-blue-100 md:text-lg">
+                  Download Resume to see detailed information about skills,
+                  projects, and experiences.
                 </p>
+
+                <div className="mt-4 z-[10]">
+                  <button
+                    onClick={() => window.open("/resume.pdf", "_blank")}
+                    className="bg-[#9257ff] hover:bg-[#7a45e0] text-white font-semibold rounded-lg p-2 transition-all duration-300 transform hover:scale-105 flex items-center gap-2"
+                  >
+                    <FiDownload className="h-5 w-5" />
+                    Download Resume
+                  </button>
+                </div>
               </div>
             </div>
           </div>
