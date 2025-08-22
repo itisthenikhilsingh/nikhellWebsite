@@ -35,7 +35,10 @@ const HeroSection = () => {
   }, [rotatingTexts.length]);
 
   return (
-    <section className="min-h-screen bg-gradient-to-r from-[#2e006e6e] to-black relative overflow-hidden">
+    <section
+      id="home"
+      className="min-h-screen bg-gradient-to-r from-[#2e006e6e] to-black relative overflow-hidden"
+    >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex flex-col-reverse xl:flex-row items-center justify-between min-h-screen">
         {/* Left Section - Content */}
         <div className="z-40 xl:mb-0 mb-10 max-w-2xl text-center xl:text-left">

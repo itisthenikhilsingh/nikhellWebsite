@@ -137,7 +137,7 @@ const About = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center h-full">
                 {/* Left Column */}
                 <div>
-                  <h2 className="text-2xl text-blue-50 md:text-3xl">
+                  <h2 className="text-2xl md:text-3xl font-bold text-blue-50">
                     Tech Stack
                   </h2>
                   <p className="mt-2 md:text-xl">
@@ -165,19 +165,26 @@ const About = () => {
           <div className="col-span-12">
             <div className="grid grid-cols-[2fr_2fr_1fr] gap-6 items-start h-full">
               {/* Column 1 */}
-              <div className="bg-[#111111] rounded-xl p-5 grid grid-cols-[1fr_2fr]">
-                <div>
-                  <h3 className="text-xl text-blue-50">Time Zone</h3>
-                  <p className="mt-2 text-blue-100">
-                    I'm based in Mars, and open to remote work worldwide
+              <div className="bg-[#111111] rounded-xl  grid md:grid-cols-[1fr_1fr] items-center h-full">
+                <div className="flex-col flex justify-center pl-8 ">
+                  <h3 className="text-2xl md:text-3xl font-bold text-blue-50">
+                    Time Zone
+                  </h3>
+                  <p className="mt-2 md:text-xl">
+                    I'm based in Noida{" "}
+                    <span className="text-[#9257ff]">India</span>, and open to
+                    remote work worldwide
                   </p>
                 </div>
+
                 <div className="relative flex justify-end items-center">
-                  {/* Responsive wrapper */}
-                  <div className="relative w-full max-w-[220px] aspect-[11/12] overflow-hidden">
-                    <div className="absolute inset-0 top-0  overflow-hidden">
-                      <IndiaDotCanvas className="w-full h-full" />
-                    </div>
+                  {/* Outer container with crop */}
+                  <div className="relative w-full aspect-[11/12] overflow-hidden rounded-lg">
+                    <IndiaDotCanvas
+                      width={400} // adjust size here instead of CSS scaling
+                      height={450} // maintain correct proportions
+                      className="absolute -right-[52%] z-10"
+                    />
                   </div>
                 </div>
               </div>

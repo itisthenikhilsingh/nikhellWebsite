@@ -1,8 +1,4 @@
 import "./App.css";
-import { useEffect } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import AboutSection from "./components/AboutSection";
 import CustomCursor from "./components/CustomCursor";
 
 import Header from "./components/Header";

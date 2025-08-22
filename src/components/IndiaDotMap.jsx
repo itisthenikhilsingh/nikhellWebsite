@@ -20,11 +20,29 @@ function pointInPolygon(x, y, poly) {
   return inside;
 }
 
+function findCity(x, y, poly, radius = 25) {
+  if (pointInPolygon(x, y, poly)) return { x, y };
+  for (let dx = -radius; dx <= radius; dx += 2) {
+    for (let dy = -radius; dy <= radius; dy += 2) {
+      const nx = x + dx;
+      const ny = y + dy;
+      if (pointInPolygon(nx, ny, poly)) {
+        return { x: nx, y: ny };
+      }
+    }
+  }
+  return null;
+}
+
+const CITY_COORDS = {
+  delhi: [623, 410],
+};
+
 export default function IndiaDotCanvas({
   width = 550,
   height = 605,
-  spacing = 22,
-  dotRadius = 1,
+  spacing = 20,
+  dotRadius = 0.8,
   maxDotRadius = 10,
   influenceRadius = 150,
   dotColor = "#fff",
@@ -33,14 +51,13 @@ export default function IndiaDotCanvas({
   const canvasRef = useRef(null);
   const [mouse, setMouse] = useState({ x: -9999, y: -9999 });
   const particles = useRef([]);
+  const cities = useRef([]);
   const mouseRef = useRef({ x: -9999, y: -9999 });
 
-  // keep mouse in a ref (no re-render)
   useEffect(() => {
     mouseRef.current = mouse;
   }, [mouse]);
 
-  // build dots once
   useEffect(() => {
     const pts = [];
     const pad = spacing * 0.6;
@@ -58,7 +75,20 @@ export default function IndiaDotCanvas({
         }
       }
     }
+
+    const cityPts = [];
+    Object.entries(CITY_COORDS).forEach(([name, [x, y]]) => {
+      const snap = findCity(x, y, INDIA_POLYGON);
+      if (snap) {
+        cityPts.push({
+          x: snap.x,
+          y: snap.y,
+        });
+      }
+    });
+
     particles.current = pts;
+    cities.current = cityPts;
   }, [spacing, dotRadius]);
 
   useEffect(() => {
@@ -68,11 +98,11 @@ export default function IndiaDotCanvas({
     let frame;
     const scale = width / VIEW_W;
 
-    const animationSpeed = 0.12; // easing factor
-    const pullStrength = 0.2; // << adjust this to control how far dots move toward cursor
+    const animationSpeed = 0.12;
+    const pullStrength = 0.2;
 
     function draw() {
-      ctx.clearRect(0, 0, width, height); // transparent background
+      ctx.clearRect(0, 0, width, height);
 
       const currentMouse = mouseRef.current;
 
@@ -87,23 +117,25 @@ export default function IndiaDotCanvas({
 
         if (dist < influenceRadius) {
           const strength = 1 - dist / influenceRadius;
-
-          // pull toward cursor
           targetX = p.originalX + dx * strength * pullStrength;
           targetY = p.originalY + dy * strength * pullStrength;
-
-          // radius grows
           targetR = dotRadius + strength * (maxDotRadius - dotRadius) * 0.2;
         }
 
-        // interpolate smoothly
         p.x += (targetX - p.x) * animationSpeed;
         p.y += (targetY - p.y) * animationSpeed;
         p.r += (targetR - p.r) * animationSpeed;
 
         ctx.beginPath();
         ctx.arc(p.x * scale, p.y * scale, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = dotColor; // same color always
+        ctx.fillStyle = dotColor;
+        ctx.fill();
+      });
+
+      cities.current.forEach((c) => {
+        ctx.beginPath();
+        ctx.arc(c.x * scale, c.y * scale, 5, 0, Math.PI * 2);
+        ctx.fillStyle = "red";
         ctx.fill();
       });
 
@@ -123,7 +155,7 @@ export default function IndiaDotCanvas({
       style={{
         display: "block",
         borderRadius: "16px",
-        background: "transparent", // no bg
+        background: "transparent",
       }}
       onMouseMove={(e) => {
         const rect = canvasRef.current.getBoundingClientRect();
