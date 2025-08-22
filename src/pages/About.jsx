@@ -102,7 +102,7 @@ const About = () => {
         {/* Content Grid */}
         <div className="mt-4 grid grid-cols-12 gap-5 md:mt-8 ">
           {/* About Me Card */}
-          <div className="col-span-12 md:col-span-7" ref={aboutCardRef}>
+          <div className="col-span-12 z-[10] md:col-span-7" ref={aboutCardRef}>
             <div className="h-full rounded-2xl bg-[#111111] p-7 ">
               <div className="flex flex-col md:flex-row items-center gap-6 h-full ">
                 {/* Profile Photo */}
@@ -132,7 +132,7 @@ const About = () => {
             </div>
           </div>
           {/* Skills Card */}
-          <div className="col-span-12 md:col-span-5" ref={skillsCardRef}>
+          <div className="col-span-12 z-[10] md:col-span-5" ref={skillsCardRef}>
             <div className="h-full rounded-2xl bg-[#111111] p-7 relative overflow-hidden">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center h-full">
                 {/* Left Column */}
@@ -165,7 +165,7 @@ const About = () => {
           <div className="col-span-12">
             <div className="grid grid-cols-[2fr_2fr_1fr] gap-6 items-start h-full">
               {/* Column 1 */}
-              <div className="bg-[#111111] rounded-xl  grid md:grid-cols-[1fr_1fr] items-center h-full">
+              <div className="bg-[#111111] rounded-xl z-[10] grid md:grid-cols-[1fr_1fr] items-center h-full">
                 <div className="flex-col flex justify-center pl-8 ">
                   <h3 className="text-2xl md:text-3xl font-bold text-blue-50">
                     Time Zone
@@ -190,7 +190,7 @@ const About = () => {
               </div>
               {/* Column 2 */}
 
-              <div className="bg-[#111111] rounded-xl p-5 md:p-7">
+              <div className="bg-[#111111] rounded-xl p-5 md:p-7 z-[10]">
                 <h3 className="text-2xl md:text-3xl font-bold text-blue-50 mb-4">
                   Highlights
                 </h3>
@@ -224,19 +224,19 @@ const About = () => {
                   </div>
 
                   {/* LeetCode */}
-                  <div className="flex items-start gap-3 md:col-span-2">
+                  <div className="flex items-start gap-3 md:col-span-2 z-[10]">
                     <div className="flex-shrink-0 mt-1">
                       <FiCode className="h-5 w-5 text-green-500" />
                     </div>
                     <div>
-                      <p
-                        className="text-blue-50 font-semibold"
+                      <a
+                        className="text-blue-50 font-semibold z-[10] cursor-pointer hover:text-[#9257ff] transition-colors"
                         href="https://leetcode.com/u/NikhilSingh672001"
                         target="_blank"
                         rel="noopener noreferrer"
                       >
                         LeetCode: 170+ Solved
-                      </p>
+                      </a>
                       <p className="text-blue-100 text-sm md:text-base">
                         Rating: 1470+ • 50-Day Streak 🔥
                       </p>
