@@ -20,7 +20,7 @@ const AboutSection = () => {
         duration: 0.8,
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: "top 40%",
+          start: "top 50%",
           toggleActions: "play none none reverse",
         },
       }
