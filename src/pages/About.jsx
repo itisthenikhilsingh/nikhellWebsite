@@ -6,6 +6,7 @@ import Frameworks from "../components/Frameworks";
 import { motion } from "framer-motion";
 import IndiaDotCanvas from "../components/IndiaDotMap";
 import { FiAward, FiCode, FiBook, FiDownload } from "react-icons/fi";
+
 const About = () => {
   const sectionRef = useRef(null);
   const titleRef = useRef(null);
@@ -159,10 +160,10 @@ const About = () => {
   return (
     <section
       ref={sectionRef}
-      className=" bg-gradient-to-l to-[#2e006e6e] from-black overflow-hidden"
+      className="bg-gradient-to-l to-[#2e006e6e] from-black overflow-hidden"
       id="about"
     >
-      <div className="container mx-auto px-4 py-8 sm:px-6 lg:px-8 ">
+      <div className="container mx-auto px-4 py-8 sm:px-6 lg:px-8">
         <div ref={titleRef}>
           <TitleHeader
             title={"ABOUT ME"}
@@ -172,47 +173,47 @@ const About = () => {
         </div>
 
         {/* Content Grid */}
-        <div className="mt-4 grid grid-cols-1 md:grid-cols-12 gap-5 md:mt-8">
+        <div className="mt-4 grid grid-cols-1 lg:grid-cols-12 gap-5 lg:mt-8">
           {/* About Me Card */}
-          <div className="col-span-12 z-[10] md:col-span-7" ref={aboutCardRef}>
-            <div className="h-full rounded-2xl bg-[#111111] p-7 ">
-              <div className="flex flex-col md:flex-row items-center gap-6 h-full ">
+          <div className="col-span-12 z-[10] lg:col-span-7" ref={aboutCardRef}>
+            <div className="h-full rounded-2xl bg-[#111111] p-7">
+              <div className="flex flex-col lg:flex-row items-center gap-6 h-full">
                 {/* Profile Photo */}
-                <div className="flex-shrink-0 ">
+                <div className="flex-shrink-0">
                   <img
-                    className="w-32 md:w-40 rounded-lg object-cover  shadow-md"
+                    className="w-32 lg:w-40 rounded-lg object-cover shadow-md"
                     src="images/Person.png"
                     alt="profile-img"
                   />
                 </div>
                 {/* Info */}
-                <div className="text-center md:text-left">
-                  <h2 className="text-2xl md:text-3xl font-bold text-white">
+                <div className="text-center lg:text-left">
+                  <h2 className="text-2xl lg:text-3xl font-bold text-white">
                     Nikhil Singh
                   </h2>
-                  <p className="mt-2 text-purple-100 md:text-lg">
-                    Hi,I am a Full-Stack Developer focused on building scalable
+                  <p className="mt-2 text-purple-100 lg:text-lg">
+                    Hi, I am a Full-Stack Developer focused on building scalable
                     and intelligent web solutions. I craft robust applications
                     using a versatile tech stack including Next.js, Spring Boot,
                     and Angular, connecting them to scalable databases with
                     tools like Prisma and PostgreSQL. My goal is to write
                     efficient code that delivers powerful and intuitive user
-                    experiences
+                    experiences.
                   </p>
                 </div>
               </div>
             </div>
           </div>
           {/* Skills Card */}
-          <div className="col-span-12 z-[10] md:col-span-5" ref={skillsCardRef}>
+          <div className="col-span-12 z-[10] lg:col-span-5" ref={skillsCardRef}>
             <div className="h-full rounded-2xl bg-[#111111] p-7 relative overflow-hidden">
-              <div className="grid grid-cols-2 md:grid-cols-2 gap-6 items-center h-full">
+              <div className="grid grid-cols-2 lg:grid-cols-2 gap-6 items-center h-full">
                 {/* Left Column */}
                 <div>
-                  <h2 className="text-2xl md:text-3xl font-bold text-white">
+                  <h2 className="text-2xl lg:text-3xl font-bold text-white">
                     Tech Stack
                   </h2>
-                  <p className="mt-2 md:text-xl text-purple-100 ">
+                  <p className="mt-2 lg:text-xl text-purple-100">
                     I specialize in a variety of languages, frameworks, and
                     tools that allow me to build robust and scalable
                     applications.
@@ -234,20 +235,19 @@ const About = () => {
               </div>
             </div>
           </div>
-          {/* tim zone highlights resume */}
+          {/* Time Zone, Highlights, Resume */}
           <div className="col-span-12">
-            {/* Only change: grid changes from 3-column (desktop) to 1-column (mobile) */}
-            <div className="grid grid-cols-1 md:grid-cols-[2fr_2fr_1fr] gap-6 items-start h-full">
+            <div className="grid grid-cols-1 lg:grid-cols-[2fr_2fr_1fr] gap-6 items-start h-full">
               {/* Column 1: Time Zone */}
               <div
                 className="bg-[#111111] rounded-xl z-[10] grid grid-cols-[1fr_1fr] items-center h-full"
                 ref={timeZoneCardRef}
               >
                 <div className="flex-col flex justify-center pl-6">
-                  <h3 className="text-2xl md:text-3xl font-bold text-white">
+                  <h3 className="text-2xl lg:text-3xl font-bold text-white">
                     Time Zone
                   </h3>
-                  <p className="mt-2 md:text-xl text-purple-100">
+                  <p className="mt-2 lg:text-xl text-purple-100">
                     I'm in <span className="text-[#9257ff]">Noida, India</span>{" "}
                     and open to remote work worldwide
                   </p>
@@ -255,13 +255,13 @@ const About = () => {
 
                 <div className="relative flex justify-end items-center">
                   <div
-                    className="relative w-full aspect-[11/12] overflow-hidden rounded-lg "
+                    className="relative w-full aspect-[11/12] overflow-hidden rounded-lg"
                     ref={indiaCardRef}
                   >
                     <IndiaDotCanvas
                       width={400}
                       height={450}
-                      className="absolute  xl:-right-[52%] z-10"
+                      className="absolute xl:-right-[52%] z-10"
                     />
                   </div>
                 </div>
@@ -269,10 +269,10 @@ const About = () => {
 
               {/* Column 2: Highlights */}
               <div
-                className="bg-[#111111] rounded-xl p-5 md:p-7 z-[10]"
+                className="bg-[#111111] rounded-xl p-5 lg:p-7 z-[10]"
                 ref={highlightCardRef}
               >
-                <h3 className="text-2xl md:text-3xl font-bold text-blue-50 mb-4">
+                <h3 className="text-2xl lg:text-3xl font-bold text-blue-50 mb-4">
                   Highlights
                 </h3>
                 <div className="grid grid-cols-2 gap-4">
@@ -283,7 +283,7 @@ const About = () => {
                     </div>
                     <div>
                       <p className="text-blue-50 font-semibold">B.Tech in IT</p>
-                      <p className="text-blue-100 text-sm md:text-base">
+                      <p className="text-blue-100 text-sm lg:text-base">
                         Dr. B.R. Ambedkar NIT Jalandhar
                       </p>
                     </div>
@@ -298,14 +298,14 @@ const About = () => {
                       <p className="text-blue-50 font-semibold">
                         GATE 2025 (CS) Qualified
                       </p>
-                      <p className="text-blue-100 text-sm md:text-base">
+                      <p className="text-blue-100 text-sm lg:text-base">
                         Top 10% nationwide
                       </p>
                     </div>
                   </div>
 
                   {/* LeetCode */}
-                  <div className="flex items-start gap-3 md:col-span-2 z-[10]">
+                  <div className="flex items-start gap-3 lg:col-span-2 z-[10]">
                     <div className="flex-shrink-0 mt-1">
                       <FiCode className="h-5 w-5 text-green-500" />
                     </div>
@@ -318,7 +318,7 @@ const About = () => {
                       >
                         LeetCode: 170+ Solved
                       </a>
-                      <p className="text-blue-100 text-sm md:text-base">
+                      <p className="text-blue-100 text-sm lg:text-base">
                         Rating: 1470+ • 50-Day Streak 🔥
                       </p>
                     </div>
@@ -331,10 +331,10 @@ const About = () => {
                 className="bg-[#111111] rounded-xl p-5 z-[10]"
                 ref={resumeCardRef}
               >
-                <h3 className="text-2xl md:text-3xl font-bold text-blue-50 flex items-center gap-2">
+                <h3 className="text-2xl lg:text-3xl font-bold text-blue-50 flex items-center gap-2">
                   <FiDownload className="text-[#9257ff]" /> MORE ?
                 </h3>
-                <p className="mt-2 text-blue-100 md:text-lg">
+                <p className="mt-2 text-blue-100 lg:text-lg">
                   Download Resume to see detailed information about skills,
                   projects, and experiences.
                 </p>
