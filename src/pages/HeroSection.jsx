@@ -7,6 +7,7 @@ import { Globe } from "../components/globe";
 const HeroSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isGlitching, setIsGlitching] = useState(false);
+
   const rotatingTexts = [
     "Nikhil",
     "Engineer",
@@ -29,7 +30,7 @@ const HeroSection = () => {
         setCurrentIndex((prev) => (prev + 1) % rotatingTexts.length);
         setIsGlitching(false);
       }, 300);
-    }, 1000);
+    }, 1500);
 
     return () => clearInterval(interval);
   }, [rotatingTexts.length]);
@@ -39,10 +40,11 @@ const HeroSection = () => {
       id="home"
       className="min-h-screen bg-gradient-to-r from-[#2e006e6e] to-black relative overflow-hidden"
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex flex-col-reverse xl:flex-row items-center justify-between min-h-screen">
-        {/* Left Section - Content */}
-        <div className="z-40 xl:mb-0 mb-10 max-w-2xl text-center xl:text-left">
-          {/* Main Heading with Glitch Effect */}
+      {/* Container with increased mobile padding */}
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-center justify-between min-h-screen pt-20 pb-16 lg:pt-0 lg:pb-0">
+        {/* Left - Text Content */}
+        <div className="z-40 lg:mb-0 mb-8 max-w-2xl w-full text-center lg:text-left">
+          {/* Main Heading */}
           <motion.h1
             initial={{ opacity: 0, y: 100 }}
             animate={{ opacity: 1, y: 0 }}
@@ -50,10 +52,10 @@ const HeroSection = () => {
               type: "spring",
               stiffness: 60,
               damping: 20,
-              delay: 1.3,
+              delay: 1.2,
               duration: 1,
             }}
-            className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold z-10 mb-6 leading-tight"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-4 sm:mb-6 leading-tight"
           >
             I'm
             <br />
@@ -62,21 +64,21 @@ const HeroSection = () => {
               initial={{ opacity: 1 }}
               animate={{
                 opacity: isGlitching ? [1, 0, 1] : 1,
-                x: isGlitching ? [0, -5, 5, 0] : 0,
+                x: isGlitching ? [0, -6, 6, 0] : 0,
               }}
               transition={{
                 duration: isGlitching ? 0.3 : 0.5,
                 times: isGlitching ? [0, 0.2, 0.8, 1] : undefined,
               }}
-              className="text-violet-500 relative inline-block"
+              className="text-violet-400 relative inline-block"
             >
               {rotatingTexts[currentIndex]}
               {isGlitching && (
                 <>
-                  <span className="absolute top-0 left-0 text-red-500 opacity-70">
+                  <span className="absolute top-0 left-0 text-red-500 opacity-70 transform -translate-x-px">
                     {rotatingTexts[currentIndex]}
                   </span>
-                  <span className="absolute top-0 left-0 text-cyan-500 opacity-70 transform translate-x-1">
+                  <span className="absolute top-0 left-0 text-cyan-400 opacity-70 transform translate-x-px">
                     {rotatingTexts[currentIndex]}
                   </span>
                 </>
@@ -92,10 +94,10 @@ const HeroSection = () => {
               type: "spring",
               stiffness: 60,
               damping: 20,
-              delay: 1.5,
+              delay: 1.4,
               duration: 1,
             }}
-            className="text-lg md:text-xl lg:text-2xl text-purple-200 z-20 leading-relaxed"
+            className="text-base sm:text-lg md:text-xl lg:text-2xl text-purple-200 leading-relaxed max-w-lg mx-auto lg:mx-0 mb-8"
           >
             B.Tech graduate specializing in full-stack development with
             expertise in JavaScript, Python, React, and Next.js. Passionate
@@ -104,7 +106,7 @@ const HeroSection = () => {
           </motion.p>
         </div>
 
-        {/* Right Section - Globe */}
+        {/* Right - Globe */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -112,14 +114,12 @@ const HeroSection = () => {
             type: "spring",
             stiffness: 60,
             damping: 20,
-            delay: 0.2,
+            delay: 0.3,
             duration: 1,
           }}
-          className="z-30 w-full flex items-center justify-center xl:justify-end mb-10 xl:mb-0"
+          className="z-30 w-full flex justify-center lg:justify-end"
         >
-          <div className="w-[280px] sm:w-[350px] md:w-[400px] lg:w-[450px] xl:w-[500px] xl:mr-0">
-            <Globe />
-          </div>
+          <Globe className="w-full max-w-[280px] sm:max-w-[340px] md:max-w-[380px] lg:max-w-[460px]" />
         </motion.div>
       </div>
     </section>

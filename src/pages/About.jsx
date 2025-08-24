@@ -12,6 +12,10 @@ const About = () => {
   const aboutCardRef = useRef(null);
   const skillsCardRef = useRef(null);
   const frameworksRef = useRef(null);
+  const timeZoneCardRef = useRef(null);
+  const indiaCardRef = useRef(null);
+  const highlightCardRef = useRef(null);
+  const resumeCardRef = useRef(null);
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -31,7 +35,6 @@ const About = () => {
         },
       }
     );
-
     // About Card Animation
     gsap.fromTo(
       aboutCardRef.current,
@@ -44,12 +47,11 @@ const About = () => {
         duration: 1,
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: "top 60%",
+          start: "top 40%",
           toggleActions: "play none none reverse",
         },
       }
     );
-
     // Skills Card Animation
     gsap.fromTo(
       skillsCardRef.current,
@@ -62,7 +64,7 @@ const About = () => {
         duration: 1,
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: "top 60%",
+          start: "top 40%",
           toggleActions: "play none none reverse",
         },
       }
@@ -74,10 +76,80 @@ const About = () => {
       {
         opacity: 1,
         scale: 1,
+        delay: 0.6,
         duration: 0.8,
         scrollTrigger: {
           trigger: frameworksRef.current,
-          start: "top 80%",
+          start: "top 50%",
+          toggleActions: "play none none reverse",
+        },
+      }
+    );
+    // Time Zone Card Animation
+    gsap.fromTo(
+      timeZoneCardRef.current,
+      { y: 100, opacity: 0, filter: "blur(10px)" },
+      {
+        y: 0,
+        opacity: 1,
+        delay: 0.8,
+        filter: "blur(0px)",
+        duration: 1,
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 50%",
+          toggleActions: "play none none reverse",
+        },
+      }
+    );
+    // India Card Animation
+    gsap.fromTo(
+      indiaCardRef.current,
+      { y: 100, opacity: 0, scale: 2, filter: "blur(10px)" },
+      {
+        y: 0,
+        opacity: 1,
+        delay: 1,
+        scale: 1,
+        filter: "blur(0px)",
+        duration: 1,
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 60%",
+          toggleActions: "play none none reverse",
+        },
+      }
+    );
+    // Highlight Card Animation
+    gsap.fromTo(
+      highlightCardRef.current,
+      { y: 100, opacity: 0, filter: "blur(10px)" },
+      {
+        y: 0,
+        opacity: 1,
+        delay: 0.8,
+        filter: "blur(0px)",
+        duration: 1,
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 50%",
+          toggleActions: "play none none reverse",
+        },
+      }
+    );
+    // Resume Card Animation
+    gsap.fromTo(
+      resumeCardRef.current,
+      { y: 100, opacity: 0, filter: "blur(10px)" },
+      {
+        y: 0,
+        opacity: 1,
+        delay: 0.8,
+        filter: "blur(0px)",
+        duration: 1,
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 50%",
           toggleActions: "play none none reverse",
         },
       }
@@ -90,7 +162,7 @@ const About = () => {
       className=" bg-gradient-to-l to-[#2e006e6e] from-black overflow-hidden"
       id="about"
     >
-      <div className="container mx-auto px-4 py-8 sm:px-6 lg:px-8 z-10">
+      <div className="container mx-auto px-4 py-8 sm:px-6 lg:px-8 ">
         <div ref={titleRef}>
           <TitleHeader
             title={"ABOUT ME"}
@@ -100,7 +172,7 @@ const About = () => {
         </div>
 
         {/* Content Grid */}
-        <div className="mt-4 grid grid-cols-12 gap-5 md:mt-8 ">
+        <div className="mt-4 grid grid-cols-1 md:grid-cols-12 gap-5 md:mt-8">
           {/* About Me Card */}
           <div className="col-span-12 z-[10] md:col-span-7" ref={aboutCardRef}>
             <div className="h-full rounded-2xl bg-[#111111] p-7 ">
@@ -115,10 +187,10 @@ const About = () => {
                 </div>
                 {/* Info */}
                 <div className="text-center md:text-left">
-                  <h2 className="text-2xl md:text-3xl font-bold text-blue-50">
+                  <h2 className="text-2xl md:text-3xl font-bold text-white">
                     Nikhil Singh
                   </h2>
-                  <p className="mt-2 text-blue-100 md:text-lg">
+                  <p className="mt-2 text-purple-100 md:text-lg">
                     Hi,I am a Full-Stack Developer focused on building scalable
                     and intelligent web solutions. I craft robust applications
                     using a versatile tech stack including Next.js, Spring Boot,
@@ -134,13 +206,13 @@ const About = () => {
           {/* Skills Card */}
           <div className="col-span-12 z-[10] md:col-span-5" ref={skillsCardRef}>
             <div className="h-full rounded-2xl bg-[#111111] p-7 relative overflow-hidden">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center h-full">
+              <div className="grid grid-cols-2 md:grid-cols-2 gap-6 items-center h-full">
                 {/* Left Column */}
                 <div>
-                  <h2 className="text-2xl md:text-3xl font-bold text-blue-50">
+                  <h2 className="text-2xl md:text-3xl font-bold text-white">
                     Tech Stack
                   </h2>
-                  <p className="mt-2 md:text-xl">
+                  <p className="mt-2 md:text-xl text-purple-100 ">
                     I specialize in a variety of languages, frameworks, and
                     tools that allow me to build robust and scalable
                     applications.
@@ -162,39 +234,48 @@ const About = () => {
               </div>
             </div>
           </div>
+          {/* tim zone highlights resume */}
           <div className="col-span-12">
-            <div className="grid grid-cols-[2fr_2fr_1fr] gap-6 items-start h-full">
-              {/* Column 1 */}
-              <div className="bg-[#111111] rounded-xl z-[10] grid md:grid-cols-[1fr_1fr] items-center h-full">
-                <div className="flex-col flex justify-center pl-8 ">
-                  <h3 className="text-2xl md:text-3xl font-bold text-blue-50">
+            {/* Only change: grid changes from 3-column (desktop) to 1-column (mobile) */}
+            <div className="grid grid-cols-1 md:grid-cols-[2fr_2fr_1fr] gap-6 items-start h-full">
+              {/* Column 1: Time Zone */}
+              <div
+                className="bg-[#111111] rounded-xl z-[10] grid grid-cols-[1fr_1fr] items-center h-full"
+                ref={timeZoneCardRef}
+              >
+                <div className="flex-col flex justify-center pl-6">
+                  <h3 className="text-2xl md:text-3xl font-bold text-white">
                     Time Zone
                   </h3>
-                  <p className="mt-2 md:text-xl">
-                    I'm in
-                    <span className="text-[#9257ff]"> Noida,India</span> and
-                    open to remote work worldwide
+                  <p className="mt-2 md:text-xl text-purple-100">
+                    I'm in <span className="text-[#9257ff]">Noida, India</span>{" "}
+                    and open to remote work worldwide
                   </p>
                 </div>
 
                 <div className="relative flex justify-end items-center">
-                  {/* Outer container with crop */}
-                  <div className="relative w-full aspect-[11/12] overflow-hidden rounded-lg">
+                  <div
+                    className="relative w-full aspect-[11/12] overflow-hidden rounded-lg "
+                    ref={indiaCardRef}
+                  >
                     <IndiaDotCanvas
-                      width={400} // adjust size here instead of CSS scaling
-                      height={450} // maintain correct proportions
-                      className="absolute -right-[52%] z-10"
+                      width={400}
+                      height={450}
+                      className="absolute  xl:-right-[52%] z-10"
                     />
                   </div>
                 </div>
               </div>
-              {/* Column 2 */}
 
-              <div className="bg-[#111111] rounded-xl p-5 md:p-7 z-[10]">
+              {/* Column 2: Highlights */}
+              <div
+                className="bg-[#111111] rounded-xl p-5 md:p-7 z-[10]"
+                ref={highlightCardRef}
+              >
                 <h3 className="text-2xl md:text-3xl font-bold text-blue-50 mb-4">
                   Highlights
                 </h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="grid grid-cols-2 gap-4">
                   {/* Education */}
                   <div className="flex items-start gap-3">
                     <div className="flex-shrink-0 mt-1">
@@ -244,18 +325,19 @@ const About = () => {
                   </div>
                 </div>
               </div>
-              {/* Column 3 */}
-              <div className="bg-[#111111] rounded-xl p-5 z-[10]">
-                <h3 className="text-2xl md:text-3xl font-bold text-blue-50 flex items-center gap-2">
-                  <FiDownload className="text-[#9257ff]" />
-                  MORE ?
-                </h3>
 
+              {/* Column 3: Resume */}
+              <div
+                className="bg-[#111111] rounded-xl p-5 z-[10]"
+                ref={resumeCardRef}
+              >
+                <h3 className="text-2xl md:text-3xl font-bold text-blue-50 flex items-center gap-2">
+                  <FiDownload className="text-[#9257ff]" /> MORE ?
+                </h3>
                 <p className="mt-2 text-blue-100 md:text-lg">
                   Download Resume to see detailed information about skills,
                   projects, and experiences.
                 </p>
-
                 <div className="mt-4 z-[10]">
                   <button
                     onClick={() => window.open("/resume.pdf", "_blank")}
