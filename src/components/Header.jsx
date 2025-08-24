@@ -54,8 +54,8 @@ const Header = () => {
           className="flex items-center"
         >
           {/* Logo with gradient background */}
-          <div className="h-10 w-10 rounded-xl bg-gradient-to-r from-gray-50 to-gray-100 flex items-center justify-center text-purple-600 font-bold text-xl mr-3">
-            N
+          <div className="h-10 w-10 m-1">
+            <img src="/logo.png" alt="Logo" className="h-full w-full" />
           </div>
           {/* Brand name with gradient text effect */}
           <span className="text-xl font-bold bg-gradient-to-r from-gray-300 to-gray-100 bg-clip-text text-transparent">
