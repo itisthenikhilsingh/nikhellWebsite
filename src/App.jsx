@@ -1,25 +1,31 @@
 import "./App.css";
 import CustomCursor from "./components/CustomCursor";
-
 import Header from "./components/Header";
 import HeroSection from "./pages/HeroSection";
-
 import StarsCanvas from "./components/StarBackground";
-
 import About from "./pages/About";
-import IndiaDotCanvas from "./components/IndiaDotMap";
+import ProjectSection from "./pages/ProjectSection";
+
+import { useEffect } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 function App() {
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    ScrollTrigger.refresh();
+    return () => {
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    };
+  }, []);
   return (
     <>
-      {/* <div className="container mx-auto max-w-7xl px-4"> */}
       <StarsCanvas />
       <Header />
       <HeroSection />
       <CustomCursor />
-      {/* <AboutSection /> */}
       <About />
-      {/* </div> */}
+      <ProjectSection />
     </>
   );
 }

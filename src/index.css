@@ -34,21 +34,14 @@
 /* Base Styles */
 html {
   scroll-behavior: smooth;
-  cursor: none; /* Hide default cursor for custom one */
+  cursor: none; /* Hide default cursor */
 }
 
 body {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  overflow-x: hidden;
-  background-color: #0b0620;
-  color: #a7a7a7;
-  font-family: "aeonik", sans-serif; /* Use custom font */
-  cursor: none;
+  @apply m-0 p-0 w-full overflow-x-hidden bg-[#001d0f] text-[#a7a7a7] font-aeonik cursor-none;
 }
 
-/* Hide cursor on interactive elements (except mobile) */
+/* Hide default cursor on interactive elements (desktop only) */
 @media (min-width: 769px) {
   a,
   button,
@@ -66,7 +59,7 @@ section {
   overflow: hidden;
 }
 
-/* Reusable Utilities */
+/* === LAYER: Utilities === */
 @layer utilities {
   /* Gradient text */
   .gradient-title {
@@ -95,15 +88,43 @@ section {
     animation: orbit var(--duration, 20s) linear infinite;
     transform-origin: center;
   }
+
+  /* === General Title: Large responsive heading === */
+  .general-title {
+    @apply text-5xl md:text-8xl 2xl:text-[8.5rem] font-bold uppercase leading-[9vw] tracking-[-0.35vw] font-aeonik;
+  }
+
+  /* === Column Center: Flex column + center === */
+  .col-center {
+    @apply flex flex-col justify-center items-center;
+  }
+
+  /* === Project Scroll: Rotated "scroll" bar with border === */
+  .project-text-scroll {
+    @apply rotate-[-3deg];
+    border: 0.5vw solid rgba(255, 255, 255, 0.2); /* Visible subtle border */
+    overflow: hidden;
+  }
 }
 
-/* SVG Stroke Utility */
-.stroke-white\/20 {
-  stroke: rgba(255, 255, 255, 0.2);
-  stroke-width: 1;
+/* === Global Utility Classes === */
+
+/* Custom font class */
+.font-aeonik {
+  font-family: "aeonik", sans-serif;
 }
 
-/* Responsive Text Sizing */
+/* Background for the "freaking" scroll bar */
+.bg-project-fill {
+  background-color: #7a3cff; /* Your violet brand color */
+}
+
+/* Text style inside the project scroll */
+.text-project {
+  @apply text-white md:text-6xl text-3xl font-semibold uppercase tracking-tighter;
+}
+
+/* Responsive Text Sizing (Mobile) */
 @media (max-width: 640px) {
   h1 {
     font-size: 2.5rem !important;
@@ -122,7 +143,12 @@ section {
     transform: translateY(70px);
   }
 }
-/* Add to your styles */
+
+/* Optional: Clip Path Utility (if reused elsewhere) */
 .clip-noida {
   clip-path: polygon(10% 10%, 70% 20%, 10% 50%, 70% 60%, 50% 50%);
+}
+.panel {
+  width: 100%;
+  height: 100vh;
 }

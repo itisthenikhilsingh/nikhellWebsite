@@ -8,7 +8,7 @@ const TitleHeader = ({ title, number, text }) => {
         <p className="md:text-3xl md:mt-5 text-purple-100">{text}</p>
       </div>
       <div className="items-center gap-7 hidden md:flex">
-        <div className="w-36 border border-white-50"></div>
+        <div className="w-96 border border-white-50"></div>
         <p className="gradient-title text-8xl">{number}</p>
       </div>
     </div>
