@@ -9,6 +9,7 @@ import ProjectSection from "./pages/ProjectSection";
 import { useEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Experiences from "./pages/Experiences";
 
 function App() {
   useEffect(() => {
@@ -26,6 +27,7 @@ function App() {
       <CustomCursor />
       <About />
       <ProjectSection />
+      <Experiences />
     </>
   );
 }

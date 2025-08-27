@@ -3,6 +3,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import TitleHeader from "../components/TitleHeader";
 import { SlShareAlt } from "react-icons/sl";
+import { projectImage } from "../constants/index";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -12,33 +13,6 @@ const ProjectsSection = () => {
   const horizontalSectionRef = useRef(null);
   const titleRef = useRef(null);
   const backgroundRef = useRef(null);
-
-  const projectImage = [
-    {
-      id: 1,
-      title: "Quiz Easy",
-      imageSrc: "/images/project-1.png",
-      link: "https://quizeasy-hazel.vercel.app/",
-    },
-    {
-      id: 2,
-      title: "3-D Portfolio Website",
-      imageSrc: "/images/project-2.png",
-      link: "https://nikhell-website.vercel.app/",
-    },
-    {
-      id: 3,
-      title: "Portfolio Dashboard",
-      imageSrc: "/images/project-3.png",
-      link: "#",
-    },
-    {
-      id: 4,
-      title: "Fitness Tracking App",
-      imageSrc: "/images/project-4.png",
-      link: "#",
-    },
-  ];
 
   const sectionsCount = projectImage.length;
 

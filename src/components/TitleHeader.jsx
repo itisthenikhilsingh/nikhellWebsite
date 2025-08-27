@@ -2,7 +2,7 @@ const TitleHeader = ({ title, number, text }) => {
   return (
     <div className="flex justify-between items-center">
       <div>
-        <h1 className="gradient-title font-semibold md:text-6xl text-4xl uppercase">
+        <h1 className="gradient-title font-semibold md:text-5xl text-3xl uppercase">
           {title}
         </h1>
         <p className="md:text-3xl md:mt-5 text-purple-100">{text}</p>
