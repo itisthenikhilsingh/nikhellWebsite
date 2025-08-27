@@ -103,7 +103,7 @@ const Header = () => {
               duration: 1.5,
             }}
             className="dark:text-gray-300 hover:text-violet-600 dark:hover:text-violet-400 transition-colors duration-300"
-            href="#"
+            href="https://github.com/itisthenikhilsingh"
           >
             <FiGithub className="w-5 h-5" />
           </motion.a>
@@ -120,7 +120,7 @@ const Header = () => {
               duration: 1.5,
             }}
             className="dark:text-gray-300 hover:text-violet-600 dark:hover:text-violet-400 transition-colors duration-300"
-            href="#"
+            href="https://www.linkedin.com/in/nikhil-singh-19b7a9233/"
           >
             <FiLinkedin className="w-5 h-5" />
           </motion.a>
@@ -137,7 +137,7 @@ const Header = () => {
               duration: 1.5,
             }}
             className="dark:text-gray-300 hover:text-violet-600 dark:hover:text-violet-400 transition-colors duration-300"
-            href="#"
+            href="https://www.instagram.com/nik_hell"
           >
             <FiInstagram className="w-5 h-5" />
           </motion.a>

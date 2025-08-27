@@ -1,6 +1,6 @@
 import "./App.css";
 import CustomCursor from "./components/CustomCursor";
-import Header from "./components/Header";
+import Header from "./pages/Header";
 import HeroSection from "./pages/HeroSection";
 import StarsCanvas from "./components/StarBackground";
 import About from "./pages/About";
