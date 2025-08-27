@@ -46,13 +46,13 @@ export const projectImage = [
   },
   {
     id: 3,
-    title: "Portfolio Dashboard",
+    title: "File Sharing Web App",
     imageSrc: "/images/project-3.png",
     link: "#",
   },
   {
     id: 4,
-    title: "Fitness Tracking App",
+    title: "AI Guru",
     imageSrc: "/images/project-4.png",
     link: "#",
   },
