@@ -97,19 +97,21 @@ const ProjectsSection = () => {
           // Normal scroll animations
           gsap.fromTo(
             image,
-            { scale: 0.5, opacity: 0, rotation: 40 },
+            { scale: 0.2, opacity: 0, rotation: 60 },
             {
               scale: 1,
               opacity: 1,
+
               duration: 1.2,
               rotation: 0,
-              ease: "power2.out",
+              ease: "none",
               scrollTrigger: {
                 trigger: panel,
                 containerAnimation: horizontalScroll,
                 start: "left 30%", // earlier
-                end: "left 50%", // later
-                scrub: 1, // slower + smoother
+                end: "left 30%", // later
+                scrub: 2, // slower + smoother
+                toggleActions: "play none none reverse",
               },
             }
           );
@@ -120,12 +122,12 @@ const ProjectsSection = () => {
             // First title joins entrance
             gsap.fromTo(
               imageTitle,
-              { y: 50, opacity: 0 },
+              { y: 100, opacity: 0 },
               {
                 y: 0,
                 opacity: 1,
                 duration: 1,
-                ease: "power3.out",
+                ease: "none",
                 scrollTrigger: {
                   trigger: sectionRef.current,
                   start: "top 80%",
@@ -137,7 +139,7 @@ const ProjectsSection = () => {
             // Other titles follow horizontal scroll
             gsap.fromTo(
               imageTitle,
-              { y: 40, opacity: 0 },
+              { y: 100, opacity: 0 },
               {
                 y: 0,
                 opacity: 1,
@@ -145,7 +147,7 @@ const ProjectsSection = () => {
                 scrollTrigger: {
                   trigger: panel,
                   containerAnimation: horizontalScroll,
-                  start: "left 85%", // earlier
+                  start: "left 35%", // earlier
                   end: "left 25%", // later
                   scrub: 2, // smoother
                 },

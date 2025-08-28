@@ -10,6 +10,7 @@ import About from "./pages/About";
 import ProjectSection from "./pages/ProjectSection";
 import Experiences from "./pages/Experiences";
 import More from "./pages/More";
+import ScrollToTop from "./components/ScrollToTop"; // Import the new component
 
 function App() {
   useEffect(() => {
@@ -23,14 +24,14 @@ function App() {
     <>
       <StarsCanvas />
       <Header />
-      <HeroSection />
+      <HeroSection id="hero" /> {/* Add id for the scroll target */}
       <CustomCursor />
       <About />
       <ProjectSection />
       <Experiences />
       <More />
+      <ScrollToTop /> {/* Add the scroll-to-top button */}
     </>
   );
 }
-
 export default App;
