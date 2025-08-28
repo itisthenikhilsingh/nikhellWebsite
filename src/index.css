@@ -51,10 +51,6 @@ body {
   select {
     cursor: none;
   }
-  section {
-    padding-left: 8rem;
-    padding-right: 8rem;
-  }
 }
 
 /* Section base */
@@ -179,4 +175,13 @@ section {
   to {
     transform: rotateX(82deg) rotateZ(360deg);
   }
+}
+/* Hide scrollbar for Chrome, Safari, and Edge */
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for Firefox */
+html {
+  scrollbar-width: none;
 }

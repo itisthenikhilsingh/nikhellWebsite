@@ -9,7 +9,7 @@ const StarBackground = (props) => {
   const numPoints = 1500;
   const [positions] = useState(() => {
     const arr = random.inSphere(new Float32Array(numPoints * 3), {
-      radius: 1.5,
+      radius: 2,
     });
     const hasNaN = arr.some((v) => isNaN(v));
     if (hasNaN) console.error("positions array contains NaN!");
@@ -45,7 +45,7 @@ const StarBackground = (props) => {
   });
 
   return (
-    <group rotation={[0, 0, Math.PI / 4]}>
+    <group rotation={[0, 0, Math.PI / 2]}>
       <Points ref={ref} positions={positions} frustumCulled={false} {...props}>
         <PointMaterial
           transparent

@@ -41,7 +41,7 @@ const HeroSection = () => {
       className="min-h-screen  relative overflow-hidden"
     >
       {/* Container with increased mobile padding */}
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-center justify-between min-h-screen pt-20 pb-16 lg:pt-0 lg:pb-0">
+      <div className="container mx-auto px-8 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-center justify-between min-h-screen pt-20 pb-16 lg:pt-0 lg:pb-0">
         {/* Left - Text Content */}
         <div className="z-40 lg:mb-0 mb-8 max-w-2xl w-full text-center lg:text-left">
           {/* Main Heading */}
@@ -97,7 +97,7 @@ const HeroSection = () => {
               delay: 1.4,
               duration: 1,
             }}
-            className="text-base sm:text-lg md:text-xl lg:text-2xl text-purple-200 leading-relaxed max-w-lg mx-auto lg:mx-0 mb-8"
+            className="text-base sm:text-lg md:text-xl lg:text-2xl  text-purple-200 leading-relaxed max-w-lg mx-auto lg:mx-0 mb-8"
           >
             B.Tech graduate specializing in full-stack development with
             expertise in JavaScript, Python, React, and Next.js. Passionate
@@ -117,7 +117,7 @@ const HeroSection = () => {
             delay: 0.3,
             duration: 1,
           }}
-          className="z-30 w-full flex justify-center lg:justify-end"
+          className="z-30 w-full flex justify-center lg:justify-end md:translate-x-20"
         >
           <Globe className="w-full max-w-[280px] sm:max-w-[340px] md:max-w-[380px] lg:max-w-[460px]" />
         </motion.div>
