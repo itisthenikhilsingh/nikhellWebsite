@@ -38,7 +38,8 @@ html {
 }
 
 body {
-  @apply m-0 p-0 w-full overflow-x-hidden bg-[#001d0f] text-[#a7a7a7] font-aeonik cursor-none;
+  @apply m-0 p-0 w-full overflow-x-hidden bg-gradient-to-l
+    to-[#0c001d] from-black text-white font-aeonik cursor-none;
 }
 
 /* Hide default cursor on interactive elements (desktop only) */
@@ -49,6 +50,10 @@ body {
   textarea,
   select {
     cursor: none;
+  }
+  section {
+    padding-left: 8rem;
+    padding-right: 8rem;
   }
 }
 
@@ -160,4 +165,18 @@ section {
 .no-scrollbar {
   -ms-overflow-style: none; /* IE/Edge */
   scrollbar-width: none; /* Firefox */
+}
+@layer utilities {
+  .animate-spin-slow {
+    animation: spin 60s linear infinite;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotateX(82deg) rotateZ(0deg);
+  }
+  to {
+    transform: rotateX(82deg) rotateZ(360deg);
+  }
 }

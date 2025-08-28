@@ -39,7 +39,7 @@ const Header = () => {
     // Main header container with absolute positioning
     <header className="absolute transition-all w-full z-50 duration-300 ">
       {/* Header content container with responsive padding */}
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16 md:h-20 shadow-md backdrop-blur-[1.5px]">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16 md:h-20 shadow-md backdrop-blur-[2px]">
         {/* Logo and Brand Name Section */}
         <motion.div
           initial={{ opacity: 0, x: -50 }}

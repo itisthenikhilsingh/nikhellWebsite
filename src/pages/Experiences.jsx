@@ -28,7 +28,7 @@ const Experiences = () => {
   return (
     <section
       ref={sectionRef}
-      className="bg-gradient-to-l to-[#2e006e6e] from-black overflow-hidden"
+      className=" overflow-hidden"
       id="experience"
     >
       <div className="container mx-auto px-4 py-8 sm:px-6 lg:px-8">

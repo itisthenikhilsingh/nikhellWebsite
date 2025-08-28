@@ -1,15 +1,15 @@
 import "./App.css";
+import { useEffect } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import CustomCursor from "./components/CustomCursor";
 import Header from "./pages/Header";
 import HeroSection from "./pages/HeroSection";
 import StarsCanvas from "./components/StarBackground";
 import About from "./pages/About";
 import ProjectSection from "./pages/ProjectSection";
-
-import { useEffect } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Experiences from "./pages/Experiences";
+import More from "./pages/More";
 
 function App() {
   useEffect(() => {
@@ -28,6 +28,7 @@ function App() {
       <About />
       <ProjectSection />
       <Experiences />
+      <More />
     </>
   );
 }

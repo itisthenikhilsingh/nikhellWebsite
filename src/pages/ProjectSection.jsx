@@ -97,18 +97,19 @@ const ProjectsSection = () => {
           // Normal scroll animations
           gsap.fromTo(
             image,
-            { scale: 0.8, opacity: 0, rotation: 20 },
+            { scale: 0.5, opacity: 0, rotation: 40 },
             {
               scale: 1,
               opacity: 1,
+              duration: 1.2,
               rotation: 0,
               ease: "power2.out",
               scrollTrigger: {
                 trigger: panel,
                 containerAnimation: horizontalScroll,
-                start: "left 90%", // earlier
-                end: "left 20%", // later
-                scrub: 2, // slower + smoother
+                start: "left 30%", // earlier
+                end: "left 50%", // later
+                scrub: 1, // slower + smoother
               },
             }
           );
@@ -168,7 +169,7 @@ const ProjectsSection = () => {
           height: "130%",
         }}
       />
-      <div className="absolute inset-0 bg-gradient-to-l to-[#2e006e6e] from-black opacity-90" />
+      <div className="absolute inset-0  opacity-90" />
 
       <div
         ref={pinContainerRef}
@@ -198,7 +199,7 @@ const ProjectsSection = () => {
               >
                 <div className="relative w-full flex flex-col items-center justify-center">
                   <img
-                    className="project-image w-[80vw] md:w-[60vw] max-h-[60%] rounded-2xl object-contain shadow-2xl"
+                    className="project-image w-[80vw] md:w-[50vw] max-h-[60%] rounded-2xl object-contain shadow-2xl"
                     src={project.imageSrc}
                     alt={project.title}
                   />

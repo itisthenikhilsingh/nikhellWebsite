@@ -38,7 +38,7 @@ const HeroSection = () => {
   return (
     <section
       id="home"
-      className="min-h-screen bg-gradient-to-r from-[#2e006e6e] to-black relative overflow-hidden"
+      className="min-h-screen  relative overflow-hidden"
     >
       {/* Container with increased mobile padding */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-center justify-between min-h-screen pt-20 pb-16 lg:pt-0 lg:pb-0">

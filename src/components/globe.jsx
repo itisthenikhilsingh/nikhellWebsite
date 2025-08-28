@@ -10,7 +10,7 @@ const MOVEMENT_DAMPING = 1400;
 const GLOBE_CONFIG = {
   width: 800,
   height: 800,
-  onRender: () => {},
+  onRender: () => { },
   devicePixelRatio: 2,
   phi: 0,
   theta: 0.3,
@@ -22,7 +22,7 @@ const GLOBE_CONFIG = {
   markerColor: [0.93, 0.2, 0.93], // magenta markers
   glowColor: [0.6, 0.2, 1], // soft violet glow
   markers: [
-    { location: [19.076, 72.8777], size: 0.12 }, // Mumbai
+    { location: [28.6139, 77.2090], size: 0.15 }, // Delhi, //  
     // Add more markers if needed
   ],
 };
