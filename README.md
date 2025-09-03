@@ -1,7 +1,7 @@
 # Hi there, I'm Nikhil Singh 👋  
 **Full-Stack Developer | AI Enthusiast**  
 
-I'm a final-year **B.Tech student in Information Technology** at **Dr. B.R. Ambedkar National Institute of Technology, Jalandhar (NITJ)**.  
+I'm a Recent  **B.Tech  graduate  in Information Technology** at **Dr. B.R. Ambedkar National Institute of Technology, Jalandhar (NITJ)**.  
 I am passionate about building scalable, user-focused web applications and love leveraging modern technologies and AI to create innovative digital solutions.  
 
 I am excited to begin my career as a **Trainee Software Engineer at Mphasis** in **February 2025**.  
