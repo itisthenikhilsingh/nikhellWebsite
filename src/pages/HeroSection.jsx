@@ -99,10 +99,7 @@ const HeroSection = () => {
             }}
             className="text-base sm:text-lg md:text-xl lg:text-2xl  text-purple-200 leading-relaxed max-w-lg mx-auto lg:mx-0 mb-8"
           >
-            B.Tech graduate specializing in full-stack development with
-            expertise in JavaScript, Python, React, and Next.js. Passionate
-            about building scalable, user-focused applications and leveraging AI
-            to deliver innovative digital solutions.
+            B.Tech IT graduate from NIT Jalandhar and Software Engineer at Mphasis, specializing in full-stack development with Spring Boot, Angular, and Azure. Experienced in DevOps automation and building scalable microservices. Passionate about solving complex algorithmic problems and leveraging AI to engineer secure, high-performance applications
           </motion.p>
         </div>
 

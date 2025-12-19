@@ -1,32 +1,43 @@
 export const experiences = [
   {
+    title: "Software Engineer",
+    job: "Mphasis Limited",
+    date: "Nov 2025 - Present",
+    contents: [
+      "Architecting scalable Spring Boot microservices and Angular modules on Azure, targeting a 30% improvement in system reliability.",
+      "Engineered OAuth2/JWT security protocols and optimized UI using Tailwind CSS & TypeScript.",
+      "Optimized CI/CD workflows via Azure DevOps and led code reviews to enhance deployment frequency.",
+    ],
+  },
+  {
+    title: "Associate Software Engineer Intern",
+    job: "Biz2Credit (Biz2X)",
+    date: "Sep 2025 - Nov 2025",
+    contents: [
+      "Increased infrastructure visibility by developing a DevOps dashboard using React and Flask.",
+      "Automated 100% of SSL/TLS certificate lifecycles by integrating AWS ACM and Boto3.",
+      "Reduced security risks by engineering a serverless AWS Lambda workflow for certificate expiry monitoring.",
+    ],
+  },
+  {
     title: "Trainee Software Engineer",
     job: "Mphasis Limited",
     date: "Feb 2025 - May 2025",
     contents: [
-      "Developed a wealth management onboarding portal using Spring Boot and Angular, streamlining client and relationship manager onboarding.",
-      "Implemented mapping, notifications, and data exchange verification through the portfolio module.",
-      "Built a responsive UI with integrated APIs for efficient client data management and workflow automation.",
-    ],
-  },
-  {
-    title: "Full Stack Developer",
-    job: "GKMIT",
-    date: "May 2024- July 2025",
-    contents: [
-      "Developed and deployed a full-featured e-commerce website for a client, significantly enhancing their online presence and sales.",
-      "Built a responsive and interactive front-end using React.js and Tailwind CSS to ensure a seamless user experience across all devices.",
+      "Engineered a full-stack onboarding portal using Spring Boot and Angular, reducing onboarding time by over 95%.",
+      "Designed and integrated core modules including automated notifications and workflow dashboards.",
+      "Collaborated in Agile sprints for iterative delivery and cross-team communication.",
     ],
   },
   {
     title: "Personal Projects",
     job: "Self-Developed",
-    date: "2024-Present",
+    date: "2024 - Present",
     contents: [
-      "Developed 'Quiz Easy', a full-stack quiz app using Next.js 14 that generates interactive quizzes with the Google Gemini API.",
-      "Built features like multi-mode gameplay (MCQ, open-ended), real-time scoring, and quiz history, deploying the app on Vercel.",
-      "Created a personal portfolio website utilizing React.js, Framer-motion, and Three.js to showcase technical skills.",
-      "Designed a user-friendly interface with smooth animations, ensuring a responsive design for both desktop and mobile devices.",
+      "Cloud Share: Engineered a full-stack file hosting platform using React.js and Spring Boot with secure file visibility toggles.",
+      "Implemented Spring Security, Clerk Authentication, and Razorpay API for a premium subscription model.",
+      "QuizEasy: Developed a full-stack quiz platform using Next.js with dynamic question generation using Google Gemini API.",
+      "Built analytics features including score breakdowns, accuracy tracking, and time-taken insights.",
     ],
   },
 ];
@@ -48,7 +59,7 @@ export const projectImage = [
     id: 3,
     title: "File Sharing Web App",
     imageSrc: "/images/project-3.png",
-    link: "#",
+    link: "https://cloudsharewebapp.vercel.app/",
   },
   {
     id: 4,

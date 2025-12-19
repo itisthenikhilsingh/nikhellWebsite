@@ -328,12 +328,12 @@ export default function More() {
         >
 
           <h1 className="text-white text-3xl md:text-5xl lg:text-6xl font-extrabold mb-4 leading-tight bg-gradient-to-r from-white via-purple-100 to-blue-100 bg-clip-text text-transparent">
-            Step Into the Future
+            Innovate. Build. Deploy.
             <br />
             <span className="text-transparent bg-gradient-to-r from-purple-300 to-blue-300 bg-clip-text">with NikhiL</span>
           </h1>
           <p className="text-gray-200 text-sm md:text-base lg:text-lg mb-8 max-w-xl mx-auto leading-relaxed">
-            Front-end developer crafting modern, responsive, and animated web experiences with React, Tailwind, and advanced UI techniques.
+            Transforming complex requirements into production-ready solutions through robust Full-Stack development and seamless CI/CD automation.
           </p>
           <button className="px-8 py-4 z-40 rounded-2xl bg-gradient-to-r from-purple-500 to-blue-500 text-white font-semibold hover:from-purple-600 hover:to-blue-600 transform hover:scale-105 transition-all duration-300 shadow-2xl hover:shadow-purple-500/30">
             <a href="mailto:nikhilsingh672001@gmail.com">Contact me</a>
