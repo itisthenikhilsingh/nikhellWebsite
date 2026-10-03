@@ -9,17 +9,14 @@ const HeroSection = () => {
   const [isGlitching, setIsGlitching] = useState(false);
 
   const rotatingTexts = [
-    "Nikhil",
     "Engineer",
     "Developer",
     "Coder",
     "Innovator",
     "Leader",
     "Designer",
-    "Nikhil",
     "Achiever",
     "Creator",
-    "Nikhil",
     "Adventurer",
   ];
 
@@ -57,7 +54,7 @@ const HeroSection = () => {
             }}
             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-4 sm:mb-6 leading-tight"
           >
-            I'm
+            Nikhil Singh
             <br />
             <motion.span
               key={currentIndex}

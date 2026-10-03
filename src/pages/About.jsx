@@ -276,7 +276,8 @@ const About = () => {
                     <div>
                       <p className="text-blue-50 font-semibold">B.Tech in IT</p>
                       <p className="text-blue-100 text-sm lg:text-base">
-                        Dr. B.R. Ambedkar NIT Jalandhar
+                        Dr. B. R. Ambedkar National Institute of Technology
+                        Jalandhar (NIT Jalandhar / NITJ)
                       </p>
                     </div>
                   </div>
