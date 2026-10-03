@@ -77,7 +77,7 @@ export default function IndiaDotCanvas({
     }
 
     const cityPts = [];
-    Object.entries(CITY_COORDS).forEach(([name, [x, y]]) => {
+    Object.values(CITY_COORDS).forEach(([x, y]) => {
       const snap = findCity(x, y, INDIA_POLYGON);
       if (snap) {
         cityPts.push({
@@ -95,13 +95,24 @@ export default function IndiaDotCanvas({
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
-    let frame;
+    let frame = null;
+    let isIntersecting = false;
+    let isPageVisible = document.visibilityState === "visible";
     const scale = width / VIEW_W;
 
     const animationSpeed = 0.12;
     const pullStrength = 0.2;
 
+    const scheduleDraw = () => {
+      if (isIntersecting && isPageVisible && frame === null) {
+        frame = requestAnimationFrame(draw);
+      }
+    };
+
     function draw() {
+      frame = null;
+      if (!isIntersecting || !isPageVisible) return;
+
       ctx.clearRect(0, 0, width, height);
 
       const currentMouse = mouseRef.current;
@@ -139,11 +150,34 @@ export default function IndiaDotCanvas({
         ctx.fill();
       });
 
-      frame = requestAnimationFrame(draw);
+      scheduleDraw();
     }
 
-    draw();
-    return () => cancelAnimationFrame(frame);
+    const observer = new IntersectionObserver(([entry]) => {
+      isIntersecting = entry.isIntersecting;
+      if (isIntersecting) scheduleDraw();
+      else if (frame !== null) {
+        cancelAnimationFrame(frame);
+        frame = null;
+      }
+    });
+    observer.observe(canvas);
+
+    const handleVisibilityChange = () => {
+      isPageVisible = document.visibilityState === "visible";
+      if (isPageVisible) scheduleDraw();
+      else if (frame !== null) {
+        cancelAnimationFrame(frame);
+        frame = null;
+      }
+    };
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+
+    return () => {
+      observer.disconnect();
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+      if (frame !== null) cancelAnimationFrame(frame);
+    };
   }, [width, height, dotColor, dotRadius, maxDotRadius, influenceRadius]);
 
   return (

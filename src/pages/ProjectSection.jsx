@@ -184,7 +184,7 @@ const ProjectsSection = () => {
           <TitleHeader
             title={"PROJECTS"}
             text={"Featured Projects"}
-            number={2}
+            number={3}
           />
         </div>
 

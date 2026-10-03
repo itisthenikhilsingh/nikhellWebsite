@@ -27,8 +27,8 @@ function App() {
       <HeroSection id="hero" /> {/* Add id for the scroll target */}
       <CustomCursor />
       <About />
-      <ProjectSection />
       <Experiences />
+      <ProjectSection />
       <More />
       <ScrollToTop /> {/* Add the scroll-to-top button */}
     </>

@@ -2,22 +2,12 @@ import { OrbitingCircles } from "./OrbitingCircles";
 
 export function Frameworks() {
   const skills = [
-    "auth0",
-    "blazor",
+    "azure",
     "cplusplus",
-    "csharp",
-    "css3",
-    "dotnet",
-    "dotnetcore",
     "git",
-    "html5",
     "javascript",
-    "microsoft",
+    "microsoftsqlserver",
     "react",
-    "sqlite",
-    "tailwindcss",
-    "vitejs",
-    "wordpress",
   ];
   const Icon = ({ src }) => (
     <img

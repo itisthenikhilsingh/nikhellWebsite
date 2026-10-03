@@ -17,6 +17,7 @@ const About = () => {
   const indiaCardRef = useRef(null);
   const highlightCardRef = useRef(null);
   const resumeCardRef = useRef(null);
+  const resumePreviewRef = useRef(null);
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -81,7 +82,7 @@ const About = () => {
         duration: 0.8,
         scrollTrigger: {
           trigger: frameworksRef.current,
-          start: "top 50%",
+          start: "top 70%",
           toggleActions: "play none none reverse",
         },
       }
@@ -177,28 +178,18 @@ const About = () => {
           {/* About Me Card */}
           <div className="col-span-12 z-[10] lg:col-span-7" ref={aboutCardRef}>
             <div className="h-full rounded-2xl bg-[#111111] p-7">
-              <div className="flex flex-col lg:flex-row items-center gap-6 h-full">
-                {/* Profile Photo */}
-                <div className="flex-shrink-0">
-                  <img
-                    className="w-32 lg:w-40 rounded-lg object-cover shadow-md"
-                    src="images/Person.png"
-                    alt="profile-img"
-                  />
-                </div>
-                {/* Info */}
+              <div className="h-full">
                 <div className="text-center lg:text-left">
                   <h2 className="text-2xl lg:text-3xl font-bold text-white">
                     Nikhil Singh
                   </h2>
                   <p className="mt-2 text-purple-100 lg:text-lg">
-                    Hi, I am a Full-Stack Developer focused on building scalable
-                    and intelligent web solutions. I craft robust applications
-                    using a versatile tech stack including Next.js, Spring Boot,
-                    and Angular, connecting them to scalable databases with
-                    tools like Prisma and PostgreSQL. My goal is to write
-                    efficient code that delivers powerful and intuitive user
-                    experiences.
+                    I am a Software Engineer at Mphasis, building backend
+                    services for the VFS Global Visa Processing Platform. I
+                    specialize in Java, Spring Boot, REST APIs, SQL,
+                    microservices, and backend development, with experience
+                    across appointment workflows, notifications, reporting, and
+                    application processing.
                   </p>
                 </div>
               </div>
@@ -213,10 +204,11 @@ const About = () => {
                   <h2 className="text-2xl lg:text-3xl font-bold text-white">
                     Tech Stack
                   </h2>
-                  <p className="mt-2 lg:text-xl text-purple-100">
-                    I specialize in a variety of languages, frameworks, and
-                    tools that allow me to build robust and scalable
-                    applications.
+                  <p className="mt-2 text-sm leading-relaxed text-purple-100 lg:text-base">
+                    Java, C++, SQL, Spring Boot, Spring Security, REST APIs,
+                    Microservices, Hibernate, JPA, JDBC, SQL Server, MySQL,
+                    MongoDB, Azure, Azure DevOps, AWS, Docker, Git, Postman,
+                    Jira, JUnit, and Mockito.
                   </p>
                 </div>
 
@@ -289,6 +281,21 @@ const About = () => {
                     </div>
                   </div>
 
+                  {/* Placement Representative */}
+                  <div className="flex items-start gap-3">
+                    <div className="flex-shrink-0 mt-1">
+                      <FiAward className="h-5 w-5 text-yellow-400" />
+                    </div>
+                    <div>
+                      <p className="text-blue-50 font-semibold">
+                        Placement Representative
+                      </p>
+                      <p className="text-blue-100 text-sm lg:text-base">
+                        Secured 10+ companies for NITJ campus recruitment
+                      </p>
+                    </div>
+                  </div>
+
                   {/* GATE Qualified */}
                   <div className="flex items-start gap-3">
                     <div className="flex-shrink-0 mt-1">
@@ -296,30 +303,25 @@ const About = () => {
                     </div>
                     <div>
                       <p className="text-blue-50 font-semibold">
-                        GATE 2025 (CS) Qualified
+                        GATE 2025 (Computer Science)
                       </p>
                       <p className="text-blue-100 text-sm lg:text-base">
-                        Top 10% nationwide
+                        Qualified
                       </p>
                     </div>
                   </div>
 
-                  {/* LeetCode */}
-                  <div className="flex items-start gap-3 lg:col-span-2 z-[10]">
+                  {/* DSA */}
+                  <div className="flex items-start gap-3">
                     <div className="flex-shrink-0 mt-1">
                       <FiCode className="h-5 w-5 text-green-500" />
                     </div>
                     <div>
-                      <a
-                        className="text-blue-50 font-semibold z-[10] cursor-pointer hover:text-[#9257ff] transition-colors"
-                        href="https://leetcode.com/u/NikhilSingh672001"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        LeetCode: 170+ Solved
-                      </a>
+                      <p className="text-blue-50 font-semibold">
+                        Data Structures & Algorithms
+                      </p>
                       <p className="text-blue-100 text-sm lg:text-base">
-                        Rating: 1470+ • 50-Day Streak 🔥
+                        Solved 750+ problems
                       </p>
                     </div>
                   </div>
@@ -332,19 +334,19 @@ const About = () => {
                 ref={resumeCardRef}
               >
                 <h3 className="text-2xl lg:text-3xl font-bold text-blue-50 flex items-center gap-2">
-                  <FiDownload className="text-[#9257ff]" /> MORE ?
+                  <FiBook className="text-[#9257ff]" /> MORE ?
                 </h3>
                 <p className="mt-2 text-blue-100 lg:text-lg">
-                  Download Resume to see detailed information about skills,
-                  projects, and experiences.
+                  Preview my resume and explore my skills, projects, and
+                  experience.
                 </p>
                 <div className="mt-4 z-[10]">
                   <button
-                    onClick={() => window.open("/resume.pdf", "_blank")}
+                    onClick={() => resumePreviewRef.current?.showModal()}
                     className="bg-[#9257ff] hover:bg-[#7a45e0] text-white font-semibold rounded-lg p-2 transition-all duration-300 transform hover:scale-105 flex items-center gap-2"
                   >
-                    <FiDownload className="h-5 w-5" />
-                    Download Resume
+                    <FiBook className="h-5 w-5" />
+                    Preview Resume
                   </button>
                 </div>
               </div>
@@ -352,6 +354,42 @@ const About = () => {
           </div>
         </div>
       </div>
+      <dialog
+        ref={resumePreviewRef}
+        aria-labelledby="resume-preview-title"
+        className="fixed inset-0 m-auto h-[90dvh] max-h-[90dvh] w-[min(96vw,900px)] max-w-none rounded-xl border border-white/20 bg-[#111111] p-0 text-white shadow-2xl backdrop:bg-black/80"
+      >
+        <div className="flex h-full flex-col">
+          <div className="flex items-center justify-between gap-4 border-b border-white/15 p-4">
+            <h2 id="resume-preview-title" className="text-lg font-semibold">
+              Resume Preview
+            </h2>
+            <div className="flex items-center gap-4">
+              <a
+                href="/resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm text-purple-300 hover:text-purple-200"
+              >
+                Open in new tab
+              </a>
+              <form method="dialog">
+                <button
+                  className="rounded-lg px-3 py-1 text-sm hover:bg-white/10"
+                  aria-label="Close resume preview"
+                >
+                  Close
+                </button>
+              </form>
+            </div>
+          </div>
+          <iframe
+            src="/resume.pdf"
+            title="Resume PDF preview"
+            className="min-h-0 w-full flex-1 bg-white"
+          />
+        </div>
+      </dialog>
     </section>
   );
 };

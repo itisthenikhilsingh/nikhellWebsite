@@ -68,24 +68,54 @@ const StarBackground = (props) => {
  * - Canvas itself also has pointerEvents: 'none' style (extra safety)
  * - Use z-0 to keep the layer beneath UI; ensure your interactive container uses a higher z-index (z-50 / z-60)
  */
-const StarsCanvas = () => (
-  <div
-    // fixed full-screen background layer
-    className="fixed inset-0 w-full h-full pointer-events-none z-0"
-    style={{ pointerEvents: "none", zIndex: 0 }}
-    aria-hidden="true"
-  >
-    <Canvas
-      // camera may be adjusted for desired look
-      camera={{ position: [1, 1, 0] }}
-      // make the canvas itself non-interactive so events pass through
-      style={{ width: "100%", height: "100%", pointerEvents: "none" }}
+const StarsCanvas = () => {
+  const [isPageVisible, setIsPageVisible] = useState(
+    () => document.visibilityState === "visible"
+  );
+  const [isContactAnimationActive, setIsContactAnimationActive] =
+    useState(false);
+
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      setIsPageVisible(document.visibilityState === "visible");
+    };
+    const handleContactAnimation = (event) => {
+      setIsContactAnimationActive(event.detail);
+    };
+
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+    document.addEventListener(
+      "portfolio:contact-animation",
+      handleContactAnimation
+    );
+    return () => {
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+      document.removeEventListener(
+        "portfolio:contact-animation",
+        handleContactAnimation
+      );
+    };
+  }, []);
+
+  return (
+    <div
+      className="fixed inset-0 w-full h-full pointer-events-none z-0"
+      style={{ pointerEvents: "none", zIndex: 0 }}
+      aria-hidden="true"
     >
-      <Suspense fallback={null}>
-        <StarBackground />
-      </Suspense>
-    </Canvas>
-  </div>
-);
+      <Canvas
+        camera={{ position: [1, 1, 0] }}
+        frameloop={
+          isPageVisible && !isContactAnimationActive ? "always" : "never"
+        }
+        style={{ width: "100%", height: "100%", pointerEvents: "none" }}
+      >
+        <Suspense fallback={null}>
+          <StarBackground />
+        </Suspense>
+      </Canvas>
+    </div>
+  );
+};
 
 export default StarsCanvas;

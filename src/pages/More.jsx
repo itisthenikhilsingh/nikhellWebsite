@@ -18,6 +18,7 @@ export default function More() {
     gsap.registerPlugin(ScrollTrigger);
 
     const container = wrapperRef.current;
+    const section = sectionRef.current;
     if (!container) return;
 
     // Basic entrance animation
@@ -131,10 +132,10 @@ export default function More() {
         float r = length(bp) + 0.0001;
         vec3 n = bp / r;
         float outwardStrength = warp * 100.0;
-        float speed = 40.0 + warp * 1200.0;
+        float speed = 80.0 + warp * 2400.0;
         vec3 pos = bp + n * outwardStrength;
         pos.z -= warp * speed * time * (0.5 + rand*0.5);
-        if (pos.z < -600.0) pos.z += 1400.0;
+        if (warp > 0.0) pos.z = mod(pos.z + 600.0, 1400.0) - 600.0;
         float flickerSpeed = 2.0 + warp * 8.0;
         float flick = (1.0 + sin(time * flickerSpeed + rand) * 0.5) * (1.0 + warp * 3.0);
         vec4 mvPosition = modelViewMatrix * vec4(pos, 1.0);
@@ -191,6 +192,13 @@ export default function More() {
         pin: true,
         scrub: 1.5,
         invalidateOnRefresh: true,
+        onToggle: (self) => {
+          document.dispatchEvent(
+            new CustomEvent("portfolio:contact-animation", {
+              detail: self.isActive,
+            })
+          );
+        },
       },
     });
 
@@ -235,22 +243,48 @@ export default function More() {
     };
     window.addEventListener('mousemove', handleMouseMove);
 
-    // visibility observer to pause when out of view
-    let running = true;
+    // Pause rendering while this section or the browser tab is not visible.
+    let isIntersecting = false;
+    let isPageVisible = document.visibilityState === "visible";
+    let rafId = null;
+    let lastTime = performance.now();
+
+    const canAnimate = () => isIntersecting && isPageVisible;
+    const scheduleAnimation = () => {
+      if (canAnimate() && rafId === null) {
+        rafId = requestAnimationFrame(animate);
+      }
+    };
+    const pauseAnimation = () => {
+      if (rafId !== null) {
+        cancelAnimationFrame(rafId);
+        rafId = null;
+      }
+    };
+    const resumeAnimation = () => {
+      lastTime = performance.now();
+      scheduleAnimation();
+    };
+
     const obs = new IntersectionObserver((entries) => {
-      entries.forEach(en => {
-        running = en.isIntersecting;
-        if (!running) cancelAnimationFrame(rafId);
-        else rafId = requestAnimationFrame(animate);
+      entries.forEach((entry) => {
+        isIntersecting = entry.isIntersecting;
+        if (isIntersecting) resumeAnimation();
+        else pauseAnimation();
       });
     }, { threshold: 0.05 });
-    if (sectionRef.current) obs.observe(sectionRef.current);
+    if (section) obs.observe(section);
 
-    // animation loop - only update uniforms and a few camera params
-    let rafId;
-    let lastTime = performance.now();
+    const handleVisibilityChange = () => {
+      isPageVisible = document.visibilityState === "visible";
+      if (isPageVisible) resumeAnimation();
+      else pauseAnimation();
+    };
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+
     const animate = (now) => {
-      if (!running) return;
+      rafId = null;
+      if (!canAnimate()) return;
       const dt = Math.min(0.05, (now - lastTime) / 1000);
       lastTime = now;
       stateRef.current.time += dt;
@@ -264,9 +298,8 @@ export default function More() {
       camera.position.z = 300 - stateRef.current.warp * 160;
       camera.rotation.z = stateRef.current.warp * 0.02 * Math.sin(stateRef.current.time * 0.6);
       renderer.render(scene, camera);
-      rafId = requestAnimationFrame(animate);
+      scheduleAnimation();
     };
-    rafId = requestAnimationFrame(animate);
 
     // resize handler
     const onResize = () => {
@@ -280,11 +313,15 @@ export default function More() {
 
     // cleanup
     return () => {
-      cancelAnimationFrame(rafId);
+      pauseAnimation();
+      document.dispatchEvent(
+        new CustomEvent("portfolio:contact-animation", { detail: false })
+      );
       window.removeEventListener('resize', onResize);
       window.removeEventListener('mousemove', handleMouseMove);
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
       ScrollTrigger.getAll().forEach(st => st.kill());
-      if (sectionRef.current) obs.disconnect();
+      obs.disconnect();
       geometry.dispose();
       material.dispose();
       starTexture.dispose();
@@ -298,7 +335,6 @@ export default function More() {
       ref={sectionRef}
       className="relative min-h-screen overflow-hidden flex items-center justify-center"
       id="contact"
-      style={{ overscrollBehavior: "none" }}
     >
       <div ref={wrapperRef} className="absolute inset-0 w-full h-full pointer-events-none z-0" />
       <div className="absolute inset-0 bg-gradient-to-b from-transparent pointer-events-none " />

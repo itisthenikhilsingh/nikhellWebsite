@@ -36,7 +36,7 @@ const Experiences = () => {
           <TitleHeader
             title={"Experiences"}
             text={"My learning Place"}
-            number={3}
+            number={2}
           />
         </div>
         <div className="overflow-hidden">

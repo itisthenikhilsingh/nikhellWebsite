@@ -48,8 +48,11 @@ export function Globe({ className, config = GLOBE_CONFIG }) {
   };
 
   useEffect(() => {
-    let phi = 0; // Declare phi inside useEffect so it's scoped per instance
+    let phi = 0;
     let width = 0;
+    let globe = null;
+    let fadeTimeout;
+    let isIntersecting = false;
 
     const onResize = () => {
       if (canvasRef.current) {
@@ -57,35 +60,50 @@ export function Globe({ className, config = GLOBE_CONFIG }) {
       }
     };
 
-    window.addEventListener("resize", onResize);
-    onResize(); // Initial size
+    const updateGlobe = () => {
+      const shouldRender =
+        isIntersecting && document.visibilityState === "visible";
 
-    if (!canvasRef.current) return;
+      if (shouldRender && !globe && canvasRef.current) {
+        onResize();
+        globe = createGlobe(canvasRef.current, {
+          ...config,
+          width: width * 2,
+          height: width * 2,
+          onRender: (state) => {
+            if (!pointerInteracting.current) phi += 0.0035;
+            state.phi = phi + rs.get();
+            state.width = width * 2;
+            state.height = width * 2;
+          },
+        });
 
-    // Create the globe with responsive size
-    const globe = createGlobe(canvasRef.current, {
-      ...config,
-      width: width * 2,
-      height: width * 2,
-      onRender: (state) => {
-        // Auto-rotate unless interacting
-        if (!pointerInteracting.current) phi += 0.0035; // Slightly slower auto-rotation
-        state.phi = phi + rs.get();
-        state.width = width * 2;
-        state.height = width * 2;
-      },
-    });
-
-    // Fade in after render
-    setTimeout(() => {
-      if (canvasRef.current) {
-        canvasRef.current.style.opacity = "1";
+        fadeTimeout = window.setTimeout(() => {
+          if (canvasRef.current) {
+            canvasRef.current.style.opacity = "1";
+          }
+        }, 100);
+      } else if (!shouldRender && globe) {
+        globe.destroy();
+        globe = null;
+        window.clearTimeout(fadeTimeout);
       }
-    }, 100);
+    };
+
+    window.addEventListener("resize", onResize);
+    const observer = new IntersectionObserver(([entry]) => {
+      isIntersecting = entry.isIntersecting;
+      updateGlobe();
+    });
+    if (canvasRef.current) observer.observe(canvasRef.current);
+    document.addEventListener("visibilitychange", updateGlobe);
 
     return () => {
-      globe.destroy();
+      observer.disconnect();
       window.removeEventListener("resize", onResize);
+      document.removeEventListener("visibilitychange", updateGlobe);
+      window.clearTimeout(fadeTimeout);
+      globe?.destroy();
     };
   }, [config, rs]);
 

@@ -99,7 +99,7 @@ const HeroSection = () => {
             }}
             className="text-base sm:text-lg md:text-xl lg:text-2xl  text-purple-200 leading-relaxed max-w-lg mx-auto lg:mx-0 mb-8"
           >
-            B.Tech IT graduate from NIT Jalandhar and Software Engineer at Mphasis, specializing in full-stack development with Spring Boot, Angular, and Azure. Experienced in DevOps automation and building scalable microservices. Passionate about solving complex algorithmic problems and leveraging AI to engineer secure, high-performance applications
+            Software Engineer at Mphasis building backend services for the VFS Global Visa Processing Platform. I specialize in Java, Spring Boot, REST APIs, SQL, microservices, and backend development, with experience in cloud platforms and DevOps automation.
           </motion.p>
         </div>
 
